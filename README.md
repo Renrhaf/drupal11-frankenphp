@@ -11,3 +11,7 @@ Make sure to use a global docker network "traefik_net" on the Traefik container 
 
 Remove the ":80" in the docker/frankenphp/caddy/dev/Caddyfile to allow for automatic SSL certificate generation.
 Caddy (inside FrankenPHP) will automatically take care of it.
+
+# Report status page
+
+![Report page](report.png)
