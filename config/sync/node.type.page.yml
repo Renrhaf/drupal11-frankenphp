@@ -1,0 +1,13 @@
+uuid: c3401df5-3bf9-4be4-8d39-27a043facbd7
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: i0snV8Wj--OkRW12UdachUiYiz3FbeMwHu_pZYfzKLc
+name: 'Page de base'
+type: page
+description: "Utilisez les <em>pages de base</em> pour votre contenu statique, tel que la page 'Qui sommes-nous'."
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

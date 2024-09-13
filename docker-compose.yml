@@ -1,0 +1,13 @@
+services:
+  drupal_php:
+    container_name: drupal_php
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

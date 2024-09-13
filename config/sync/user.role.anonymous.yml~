@@ -1,0 +1,23 @@
+uuid: d6b535cd-bf2d-4abf-8231-83333dad0880
+langcode: fr
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - commerce_product
+    - filter
+    - system
+_core:
+  default_config_hash: Tus1ZTNXKIOnrennR1hnTbc7wUPBXHTUm5UdCpEhJSk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use text format restricted_html'
+  - 'view business_card commerce_product'
+  - 'view commerce_product'
+  - 'view document commerce_product'
+  - 'view poster commerce_product'

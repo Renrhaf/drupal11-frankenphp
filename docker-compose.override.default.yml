@@ -1,0 +1,43 @@
+services:
+  drupal_php:
+    restart: no
+    build:
+      context: .
+      target: frankenphp_dev
+    volumes:
+      - .:/app:cached
+      - ./docker/frankenphp/caddy/dev/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./docker/frankenphp/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+      # If you develop on Mac or Windows you can remove the vendor/ directory
+      # from the bind-mount for better performance by enabling the next line:
+      # - /app/vendor
+    environment:
+      # See https://xdebug.org/docs/all_settings#mode
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+      # Use this to override xdebug configurations.
+      XDEBUG_CONFIG: >-
+        log_level=0
+        idekey=PHPSTORM
+      # This should correspond to the server declared in PHPStorm `Preferences | Languages & Frameworks | PHP | Servers`
+      # Then PHPStorm will use the corresponding path mappings
+      PHP_IDE_CONFIG: serverName=drupal11.loc
+    extra_hosts:
+      # Ensure that host.docker.internal is correctly defined on Linux
+      - host.docker.internal:host-gateway
+
+  drupal_db:
+    restart: no
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    container_name: drupal_db
+    ports:
+      - target: 5432
+        published: 5437
+        protocol: tcp
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - ./docker/db/data:/var/lib/postgresql/data

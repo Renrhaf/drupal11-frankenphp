@@ -1,0 +1,25 @@
+uuid: 59aa37ba-71ff-4e08-9a06-12311ba2dcd8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.calendrier
+    - field.storage.commerce_product.field_product_quantity_max
+id: commerce_product.calendrier.field_product_quantity_max
+field_name: field_product_quantity_max
+entity_type: commerce_product
+bundle: calendrier
+label: 'Quantité : max'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1000000
+default_value_callback: ''
+settings:
+  min: 1
+  max: 1000000
+  prefix: ''
+  suffix: ''
+field_type: integer

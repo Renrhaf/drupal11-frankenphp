@@ -1,0 +1,4 @@
+*/5 * * * * /usr/local/bin/php /app/vendor/bin/drush cron > /proc/1/fd/1 2>/proc/1/fd/2
+# Keep empty line at the end of the file
+# WARNING! Make sure to use "LF" line endings
+# @see https://stackoverflow.com/a/32056712/1756667
