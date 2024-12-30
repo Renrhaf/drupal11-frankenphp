@@ -1,0 +1,24 @@
+{
+    "name": "drupal/media_thumbnails_pdf",
+    "description": "Generate custom thumbnails for pdf media entities.",
+    "type": "drupal-module",
+    "homepage": "https://drupal.org/project/media_thumbnails_pdf",
+    "authors": [
+        {
+            "name": "Boris Böhne (drubb)",
+            "homepage": "https://www.drupal.org/u/drubb",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://drupal.org/project/issues/media_thumbnails_pdf",
+        "source": "https://cgit.drupalcode.org/media_thumbnails_pdf"
+    },
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/media_thumbnails": "^1.0 || ^2.0",
+        "ext-imagick": "*"
+    }
+}
+

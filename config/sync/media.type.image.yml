@@ -1,0 +1,16 @@
+uuid: fed61d8e-0713-4866-8645-9ef876e38314
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6Qope5wG7HUpV0tPOBMtDI_GZkHFcF1Xj4hgD9Cu_hM
+id: image
+label: Image
+description: 'Utiliser des images locales en tant que média réutilisable.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

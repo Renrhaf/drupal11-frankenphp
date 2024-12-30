@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Plugin manager for media entity thumbnail generation.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\media\MediaInterface;
+
+/**
+ * Implements hook_help().
+ */
+function media_thumbnails_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.media_thumbnails':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Media Thumbnails module provides a plugin manager for thumbnail generation.') . '</p>';
+      $output .= '<p>' . t('You need to install and enable at least one media thumbnail plugin.') . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<p>' . t('After installing and enabling the module, install and enable at least one thumbnail plugin module:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('Media Thumbnails EPUB') . '</li>';
+      $output .= '<li>' . t('Media Thumbnails PDF') . '</li>';
+      $output .= '<li>' . t('Media Thumbnails SVG') . '</li>';
+      $output .= '<li>' . t('Media Thumbnails Video') . '</li>';
+      $output .= '</ul>';
+      $output .= '<p>' . t('Go to <a href="@link">@link</a> and click "Add Media".', ['@link' => Url::fromRoute('entity.media.collection')->toString()]) . '</p>';
+      $output .= '<p>' . t('Select the desired media type.') . '</p>';
+      $output .= '<p>' . t('After installing and enabling, for example, the Media Thumbnails PDF plugin and adding a PDF file, you will see its thumbnail.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function media_thumbnails_media_presave(MediaInterface $entity) {
+  /** @var \Drupal\media_thumbnails\Plugin\MediaThumbnailManager $manager */
+  $manager = \Drupal::service('plugin.manager.media_thumbnail');
+  if ($manager->hasPlugin($entity)) {
+    if ($entity->isNew()) {
+      // Get the filename default thumbnnail that would be shown.
+      $default_filename = $entity->getSource()
+        ->getPluginDefinition()['default_thumbnail_filename'];
+      // Determine if the thumbnail is the default file, or a different (e.g.
+      // uploaded) file.
+      if ($default_filename == $entity->get('thumbnail')->entity->get('filename')->value) {
+        // The default thumbnail was set, so it is overwritten with
+        // the automatically generated Media Thumbnails entity.
+        $manager->createThumbnail($entity);
+      }
+    }
+    elseif (\Drupal::config('media_thumbnails.settings')
+      ->get('no_thumbnail_update')) {
+      $thumbnail = $manager->getThumbnail($entity);
+      $thumbnailUri = $thumbnail->getFileUri();
+      $default_icon_uri = \Drupal::config('media.settings')
+        ->get('icon_base_uri');
+      // Rebuild the thumbnail if using default thumbnail.
+      if (strstr($thumbnailUri, $default_icon_uri) !== FALSE) {
+        $manager->updateThumbnail($entity);
+      }
+    }
+    else {
+      $manager->updateThumbnail($entity);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function media_thumbnails_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'media' && \Drupal::config('media_thumbnails.settings')
+      ->get('allow_thumbnail_edit')) {
+    // Allow uploading or removing the thumbnail image.
+    $fields['thumbnail']->setDisplayConfigurable('form', TRUE);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function media_thumbnails_media_delete(MediaInterface $entity) {
+  /** @var \Drupal\media_thumbnails\Plugin\MediaThumbnailManager $manager */
+  $manager = \Drupal::service('plugin.manager.media_thumbnail');
+  if ($manager->hasPlugin($entity)) {
+    $manager->deleteThumbnail($entity);
+  }
+}

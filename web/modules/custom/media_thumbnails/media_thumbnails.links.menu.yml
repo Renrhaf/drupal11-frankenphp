@@ -1,0 +1,5 @@
+media_thumbnails.admin:
+  title: 'Media Thumbnails'
+  parent: system.admin_config_media
+  description: 'Configure Media Thumbnails settings.'
+  route_name: media_thumbnails.admin

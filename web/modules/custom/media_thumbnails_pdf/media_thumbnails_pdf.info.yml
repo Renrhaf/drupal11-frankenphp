@@ -1,0 +1,7 @@
+name: Media Thumbnails PDF
+type: module
+description: Generate custom thumbnails for pdf media entities
+core_version_requirement: ^9.3 || ^10 || ^11
+package: Media
+dependencies:
+  - media_thumbnails:media_thumbnails

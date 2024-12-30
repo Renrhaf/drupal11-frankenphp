@@ -1,0 +1,19 @@
+media_thumbnails.settings:
+  type: config_object
+  label: 'Media Thumbnails settings'
+  mapping:
+    bgcolor_active:
+      type: boolean
+      label: 'Use custom background color'
+    bgcolor_value:
+      type: string
+      label: 'Background color hex value'
+    width:
+      type: integer
+      label: 'Thumbnail width'
+    no_thumbnail_update:
+      type: boolean
+      label: 'Do not recreate thumbnail on update'
+    allow_thumbnail_edit:
+      type: boolean
+      label: 'Allow thumbnails to be edited'

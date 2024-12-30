@@ -1,0 +1,9 @@
+name: Media Thumbnails
+type: module
+description: Plugin manager for media entity thumbnail generation
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+package: Media
+dependencies:
+  - drupal:media
+configure: media_thumbnails.admin

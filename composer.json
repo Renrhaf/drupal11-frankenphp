@@ -31,12 +31,18 @@
         "ext-zip": "*",
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7.3",
+        "drupal/brevo": "^1.0",
         "drupal/core-composer-scaffold": "^11.0.4",
         "drupal/core-project-message": "^11.0.4",
         "drupal/core-recommended": "^11.0.4",
-        "drush/drush": "^13.1.1"
+        "drupal/mailsystem": "^4.5",
+        "drupal/symfony_mailer": "^1.5",
+        "drush/drush": "^13.1.1",
+        "symfony/brevo-mailer": "^7.2",
+        "symfony/http-client": "^7.2"
     },
     "require-dev": {
+        "drupal/coder": "^8.3",
         "drupal/core-dev": "^11.0.4"
     },
     "conflict": {
@@ -53,7 +59,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "php-http/discovery": true,
             "wikimedia/composer-merge-plugin": true,
-            "cweagans/composer-patches": true
+            "cweagans/composer-patches": true,
+            "tbachert/spi": true
         },
         "sort-packages": true
     },

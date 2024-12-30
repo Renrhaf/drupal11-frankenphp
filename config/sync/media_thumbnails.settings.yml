@@ -1,0 +1,5 @@
+bgcolor_active: false
+bgcolor_value: '#000000'
+width: 1000
+no_thumbnail_update: true
+allow_thumbnail_edit: true

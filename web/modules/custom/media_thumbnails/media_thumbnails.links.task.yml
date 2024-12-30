@@ -1,0 +1,9 @@
+media_thumbnails.admin:
+  route_name: media_thumbnails.admin
+  title: Configure
+  base_route: media_thumbnails.admin
+
+media_thumbnails.refresh:
+  route_name: media_thumbnails.refresh
+  title: Refresh
+  base_route: media_thumbnails.admin

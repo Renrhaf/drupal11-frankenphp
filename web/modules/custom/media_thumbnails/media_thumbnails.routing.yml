@@ -1,0 +1,15 @@
+media_thumbnails.admin:
+  path: '/admin/config/media/thumbnails'
+  defaults:
+    _form: 'Drupal\media_thumbnails\Form\MediaThumbnailConfigForm'
+    _title: 'Media Thumbnails settings'
+  requirements:
+    _permission: 'manage media thumbnails settings'
+
+media_thumbnails.refresh:
+  path: '/admin/config/media/thumbnails/refresh'
+  defaults:
+    _form: 'Drupal\media_thumbnails\Form\MediaThumbnailRefreshForm'
+    _title: 'Refresh'
+  requirements:
+    _permission: 'manage media thumbnails settings'

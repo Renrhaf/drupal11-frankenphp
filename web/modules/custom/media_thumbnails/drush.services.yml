@@ -1,0 +1,5 @@
+services:
+  media_thumbnails.commands:
+    class: \Drupal\media_thumbnails\Commands\MediaThumbnailCommands
+    tags:
+      - { name: drush.command }

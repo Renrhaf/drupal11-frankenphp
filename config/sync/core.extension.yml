@@ -26,6 +26,9 @@ module:
   language: 0
   link: 0
   locale: 0
+  media: 0
+  media_thumbnails: 0
+  media_thumbnails_pdf: 0
   menu_link_content: 0
   menu_ui: 0
   node: 0

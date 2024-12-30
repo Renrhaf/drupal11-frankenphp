@@ -1,0 +1,26 @@
+{
+  "name": "drupal/media_thumbnails",
+  "description": "Plugin manager for media entity thumbnail generation",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "keywords": ["Drupal"],
+  "homepage": "https://www.drupal.org/project/media_thumbnails",
+  "authors": [
+    {
+      "name": "Boris Böhne (drubb)",
+      "homepage": "https://www.drupal.org/u/drubb",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Quentin Fahrner (renrhaf)",
+      "homepage": "https://www.drupal.org/u/renrhaf",
+      "role": "Maintainer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/media_thumbnails",
+    "source": "https://git.drupalcode.org/project/media_thumbnails"
+  },
+  "require": { }
+}

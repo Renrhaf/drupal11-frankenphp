@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Generate custom thumbnails for pdf media entities.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function media_thumbnails_pdf_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.media_thumbnails_pdf':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Media Thumbnails PDF module generates thumbnails for pdf media entities.') . '</p>';
+      return $output;
+  }
+}

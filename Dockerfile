@@ -54,6 +54,7 @@ RUN set -eux; \
         gd \
         pdo_pgsql \
         uploadprogress \
+        imagick \
     ;
 
 COPY --link docker/frankenphp/conf.d/app.ini $PHP_INI_DIR/conf.d/
@@ -65,6 +66,9 @@ COPY --link docker/frankenphp/caddy/prod/Caddyfile /etc/caddy/Caddyfile
 COPY --link docker/cron/crontab.prod /etc/cronjob
 RUN chmod 0644 /etc/cronjob; \
     crontab /etc/cronjob
+
+# Setup ImageMagick policy
+COPY --link docker/imagemagick/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
 
 # Add some bash aliases
 RUN echo "alias drush='/app/vendor/bin/drush'" >> ~/.bashrc; \
