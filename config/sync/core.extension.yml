@@ -26,6 +26,7 @@ module:
   language: 0
   link: 0
   locale: 0
+  mailsystem: 0
   media: 0
   media_thumbnails: 0
   media_thumbnails_pdf: 0
@@ -39,6 +40,7 @@ module:
   pgsql: 0
   search: 0
   shortcut: 0
+  symfony_mailer: 0
   system: 0
   taxonomy: 0
   text: 0
